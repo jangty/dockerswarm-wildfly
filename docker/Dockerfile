@@ -30,7 +30,7 @@ ADD ./target/*.war /opt/jboss/wildfly/standalone/deployments/
 USER jboss
 
 # Expose the ports we're interested in
-EXPOSE 8080 8009
+EXPOSE 8080 9990
 
 # Set the default command to run on boot
 # This will boot WildFly in the standalone mode and bind to all interface
