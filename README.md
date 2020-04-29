@@ -17,7 +17,7 @@ docker build --tag=이미지명 -f docker/Dockerfile .
 ex) docker build --tag=wildfly11 -f docker/Dockerfile .
 
 ### 이미지 실행 (docker-compose)
-docker-compose 파일 내 **컨테이너이름, 이미지명, 포트정보를 알맞게 수정하고**
+docker-compose 파일 내 **컨테이너이름, 이미지명, 포트정보, WAS이름을 알맞게 수정하고**
 
 docker-compose 파일 존재하는 경로에서 아래 명령어 실행
 
