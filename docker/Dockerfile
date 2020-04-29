@@ -7,16 +7,17 @@ ENV JBOSS_HOME /opt/jboss/wildfly
 USER root
 
 
-RUN /opt/jboss/wildfly/bin/add-user.sh asmanager asmanager  --silent
+RUN /opt/jboss/wildfly/bin/add-user.sh asmanager asmanager --silent
 
 # Ensure signals are forwarded to the JVM process correctly for graceful shutdown
 ENV LAUNCH_JBOSS_IN_BACKGROUND true
 
 
-# ADD config
-ADD standalone.xml /opt/jboss/wildfly/standalone/configuration/
-COPY standalone.conf $JBOSS_HOME/bin/
+# ADD wildfly_config
+ADD ./wildfly_config/standalone.xml /opt/jboss/wildfly/standalone/configuration/
+ADD ./wildfly_config/standalone.conf $JBOSS_HOME/bin/
 
+ADD ./modules $JBOSS_HOME/modules/
 #ARG SERVER_NAME
 #ARG CLUSTER_PW
 
