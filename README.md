@@ -16,6 +16,8 @@ docker build --tag=이미지명 .
 ex) docker build --tag=monitoring_server1 .
 
 ### 이미지 실행 (docker-compose)
+docker-compose 파일 내 컨테이너이름, 포트정보를 알맞게 수정하고
+
 docker-compose 파일 존재하는 경로에서 아래 명령어 실행
 
 최초기동 : docker-compose up -d
