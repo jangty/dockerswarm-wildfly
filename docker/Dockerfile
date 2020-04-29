@@ -14,10 +14,10 @@ ENV LAUNCH_JBOSS_IN_BACKGROUND true
 
 
 # ADD wildfly_config
-ADD ./wildfly_config/standalone.xml /opt/jboss/wildfly/standalone/configuration/
-ADD ./wildfly_config/standalone.conf $JBOSS_HOME/bin/
+ADD docker/wildfly_config/standalone.xml /opt/jboss/wildfly/standalone/configuration/
+ADD docker/wildfly_config/standalone.conf $JBOSS_HOME/bin/
 
-ADD ./modules $JBOSS_HOME/modules/
+ADD docker/modules $JBOSS_HOME/modules/
 #ARG SERVER_NAME
 #ARG CLUSTER_PW
 
@@ -25,7 +25,7 @@ ADD ./modules $JBOSS_HOME/modules/
 #ENV CLUSTER_PW=${CLUSTER_PW}
 
 # Add app
-ADD ../target/*.war /opt/jboss/wildfly/standalone/deployments/
+ADD target/*.war /opt/jboss/wildfly/standalone/deployments/
 
 USER jboss
 
