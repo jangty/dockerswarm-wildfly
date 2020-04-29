@@ -26,7 +26,7 @@ docker-compose 파일 존재하는 경로에서 아래 명령어 실행
 
 삭제 : docker-compose down
 
-### TODO
+## TODO
 로그 관리
 
 클러스터링
