@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+    wildfly:
+      container_name: wildfly14-common
+      image: wildfly14-common
+      restart: always
+      user: root
+      ports:
+        - target: 8080
+          published: 8480
+          protocol: tcp
+        - 9994:9990
+      volumes:
+         - /box/logs/wildfly:/opt/jboss/wildfly/standalone/log
+      environment:
+        TZ: Asia/Seoul
+#        JAVA_OPTS: -server -Xms1024m -Xmx2048m -XX:MetaspaceSize=512M -XX:MaxMetaspaceSize=1024m -XX:+UseAdaptiveSizePolicy -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true-Djava.net.preferIPv4Stack=true
+
+#networks:
+#    default:
+#      external:
+#        name: devops
