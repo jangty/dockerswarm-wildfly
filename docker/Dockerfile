@@ -25,7 +25,7 @@ ADD ./modules $JBOSS_HOME/modules/
 #ENV CLUSTER_PW=${CLUSTER_PW}
 
 # Add app
-ADD ./*.war /opt/jboss/wildfly/standalone/deployments/
+ADD ./target/*.war /opt/jboss/wildfly/standalone/deployments/
 
 USER jboss
 
