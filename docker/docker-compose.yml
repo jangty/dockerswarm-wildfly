@@ -13,6 +13,7 @@ services:
         - /box/logs/wildfly:/opt/jboss/wildfly/standalone/log
       environment:
         SERVER_NAME: wildfly11
+        TZ: Asia/Seoul
 #networks:
 #    default:
 #      external:
