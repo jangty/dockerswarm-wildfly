@@ -3,7 +3,7 @@ version: '3.7'
 services:
     wildfly:
       container_name: wildfly
-      image: wildfly14-common
+      image: wildfly14-common:v.0.1
       restart: always # if container down restart autometic
       user: root
       ports:
