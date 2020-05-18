@@ -1,0 +1,8 @@
+*.md
+README-secret.md
+!README*.md
+.git
+.github
+*.log
+build
+
