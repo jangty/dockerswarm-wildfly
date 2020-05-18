@@ -10,14 +10,18 @@ docker 이미지빌드하면 /target/ 폴더에 있는 .war파일을 이미지�
 프로젝트 root 에 docker 폴더 위치 (/target, /src 와 동일 선상)
 
 ### 도커 빌드
+도커 이미지 레지스트리에서 이미지를 받아오거나, 직접 빌드한다.
+
 Dockerfile 파일 존재하는 경로에서 아래 명령어 실행하면 target폴더의 war를 포함해서 Wildfly 이미지가 생성됨. (도커 이미지 확인 : docker images)
 
 docker build --tag=이미지명 -f docker/Dockerfile .
 
-ex) docker build --tag=wildfly11 -f docker/Dockerfile .
+ex) docker build --tag=wildfly14-common:v1.0 -f docker/Dockerfile .
 
 ### 이미지 실행 (docker-compose)
-docker-compose 파일 내 **컨테이너이름, 이미지명, 포트정보, WAS이름을 알맞게 수정하고**
+.env 파일에 **컨테이너이름, 포트정보를 알맞게 수정하고**
+
+docker-compose 파일 내 **이미지명을 위해서 빌드한 이름대로수정**
 
 docker-compose 파일 존재하는 경로에서 아래 명령어 실행
 
