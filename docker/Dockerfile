@@ -19,7 +19,7 @@ ADD docker/wildfly_config/standalone.conf $JBOSS_HOME/bin/
 
 ADD docker/modules $JBOSS_HOME/modules/
 
-ENV SERVER_NAME=${SERVER_NAME}
+ENV WAS_NAME=${WAS_NAME}
 #ENV CLUSTER_PW=${CLUSTER_PW}
 
 # Add app
