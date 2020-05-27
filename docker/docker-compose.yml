@@ -20,5 +20,5 @@ services:
 #      networks:
 #        - backend
       environment:
-        SERVER_NAME: ${WAS_NAME}
+        WAS_NAME: ${WAS_NAME}
         TZ: Asia/Seoul
