@@ -22,3 +22,5 @@ services:
       environment:
         WAS_NAME: ${WAS_NAME}
         TZ: Asia/Seoul
+      env_file:
+        - .env
