@@ -3,20 +3,15 @@ version: '3.7'
 services:
     wildfly:
       container_name: ${WAS_NAME}_wildfly
-      image: 10.50.23.30:5000/wildfly14-common:latest
-      build:
-        context: .
-        dockerfile: Dockerfile
+
+      image: wildfly14-common:latest
 #      restart: always # if container down restart autometic
-#      user: root
+      user: root
       ports:
         - ${HTTP_PORT}:8080
         - ${ADMIN_PORT}:9990
-      deploy:
-        mode: replicated
-        replicas: 2
-#      volumes:
-#        - /box/logs/wildfly/${WAS_NAME}:/opt/jboss/wildfly/standalone/log
+      volumes:
+        - /box/logs/wildfly/${WAS_NAME}:/opt/jboss/wildfly/standalone/log
 #      networks:
 #        - backend
       environment:
