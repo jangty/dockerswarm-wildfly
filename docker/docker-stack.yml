@@ -7,15 +7,15 @@ services:
         context: .
         dockerfile: Dockerfile
 #      restart: always # if container down restart autometic
-      user: root
+#      user: root
       ports:
         - 8083:8080 ### Edit port name 
         - 9994:9990 ### Edit port name 
       deploy:
         mode: replicated
         replicas: 2
-      volumes:
-        - /box/logs/wildfly/scouter_dashboard:/opt/jboss/wildfly/standalone/log:rw ### Edit WAS name 
+#      volumes:
+#        - /box/logs/wildfly/scouter_dashboard:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
 #      networks:
 #        - backend
       environment:
