@@ -4,7 +4,8 @@ FROM jboss/wildfly:14.0.1.Final
 
 ENV JBOSS_HOME /opt/jboss/wildfly
 
-USER root
+#USER root
+USER 701
 
 
 RUN /opt/jboss/wildfly/bin/add-user.sh asmanager asmanager --silent
@@ -25,10 +26,11 @@ ENV WAS_NAME=${WAS_NAME}
 # Add app
 ADD target/*.war /opt/jboss/wildfly/standalone/deployments/
 
-USER jboss
+#USER jboss
+USER 701
 
 # Expose the ports we're interested in
-EXPOSE 8080 9990
+EXPOSE 8080 9990 8009
 
 # Set the default command to run on boot
 # This will boot WildFly in the standalone mode and bind to all interface
