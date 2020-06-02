@@ -15,8 +15,8 @@ services:
       deploy:
         mode: replicated
         replicas: 2
-#      volumes:
-#        - /box/logs/wildfly/scouter_dashboard:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
+      volumes:
+        - /box/logs/wildfly/scouter_dashboard:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
 #      networks:
 #        - backend
       environment:
