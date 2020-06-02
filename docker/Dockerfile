@@ -5,7 +5,7 @@ FROM jboss/wildfly:14.0.1.Final
 ENV JBOSS_HOME /opt/jboss/wildfly
 
 #USER root
-USER 701
+USER "701"
 
 
 RUN /opt/jboss/wildfly/bin/add-user.sh asmanager asmanager --silent
@@ -27,7 +27,7 @@ ENV WAS_NAME=${WAS_NAME}
 ADD target/*.war /opt/jboss/wildfly/standalone/deployments/
 
 #USER jboss
-USER 701
+USER "701"
 
 # Expose the ports we're interested in
 EXPOSE 8080 9990 8009
