@@ -7,10 +7,11 @@ services:
         context: .
         dockerfile: Dockerfile
 #      restart: always # if container down restart autometic
-#      user: root
+      user: 701
       ports:
         - 8083:8080 ### Edit port name 
         - 9994:9990 ### Edit port name 
+        - 8039:8009 ### Edit port name 
       deploy:
         mode: replicated
         replicas: 2
