@@ -10,7 +10,7 @@ services:
       user: "701"
       ports:
         - 8380:8080 ### Edit port name (http) 
-        - 8039:8009 ### Edit port name (ajp)
+        - 8309:8009 ### Edit port name (ajp)
         - 10290:9990 ### Edit port name (webadmin)
       deploy:
         mode: replicated
