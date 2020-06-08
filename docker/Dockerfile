@@ -26,6 +26,11 @@ ENV WAS_NAME=${WAS_NAME}
 # Add app
 ADD site/target/*.war /opt/jboss/wildfly/standalone/deployments/
 
+
+## scouter
+RUN mkdir scouter
+ADD scouter /opt/jboss/scouter
+
 #USER jboss
 USER "701"
 
