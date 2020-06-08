@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
     wildfly:
-      image: 10.50.23.30:5000/wildfly-appname:latest ### Edit image name 
+      image: 10.50.23.30:5000/wildfly-vms:latest ### Edit image name 
       build:
         context: .
         dockerfile: Dockerfile
@@ -16,10 +16,10 @@ services:
         mode: replicated
         replicas: 2
       volumes:
-        - /box/logs/wildfly/appname:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
+        - /box/logs/wildfly/vms:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
 #      networks:
 #        - backend
       environment:
-        WAS_NAME: appname ### Edit WAS name 
+        WAS_NAME: vms ### Edit WAS name 
         TZ: Asia/Seoul
 
