@@ -28,8 +28,9 @@ ADD site/target/*.war /opt/jboss/wildfly/standalone/deployments/
 
 
 ## scouter
+USER jboss
 RUN mkdir scouter
-ADD scouter /opt/jboss/scouter
+ADD docker/scouter /opt/jboss/scouter
 
 #USER jboss
 USER "701"
