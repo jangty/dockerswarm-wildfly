@@ -1,4 +1,5 @@
 # 정보 임의 수정금지 
+포트나 이름 수정필요시 TA 연락
 
 # was 이미지 빌드, run 
 wildfly14, scouter 포함되어있는 이미지를 생성하고, docker swarm환경에서 기동한다
