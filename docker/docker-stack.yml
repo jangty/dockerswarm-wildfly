@@ -15,6 +15,10 @@ services:
       deploy:
         mode: replicated
         replicas: 2
+        placement:
+           constraints: [node.role == manager]
+#           constraints: [node.role == worker]
+
       volumes:
         - /box/logs/wildfly/vms:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
 #      networks:
