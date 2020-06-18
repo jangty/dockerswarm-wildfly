@@ -24,7 +24,7 @@ ENV WAS_NAME=${WAS_NAME}
 #ENV CLUSTER_PW=${CLUSTER_PW}
 
 # Add app
-ADD site/target/*.war /opt/jboss/wildfly/standalone/deployments/
+ADD target/*.war /opt/jboss/wildfly/standalone/deployments/
 
 
 ## scouter
