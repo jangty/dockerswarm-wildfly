@@ -35,6 +35,9 @@ ADD docker/scouter /opt/jboss/scouter
 #USER jboss
 USER "701"
 
+ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+
 # Expose the ports we're interested in
 EXPOSE 8080 9990 8009
 
