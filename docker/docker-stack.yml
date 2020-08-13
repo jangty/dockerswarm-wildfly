@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
     wildfly:
-      image: 10.50.23.30:5000/wildfly-scouter-dashboard:latest ### Edit image name 
+      image: 10.50.106.73:6000/dev_jsms_wildfly:latest ### Edit image name 
       build:
         context: .
         dockerfile: Dockerfile
@@ -16,14 +16,14 @@ services:
         mode: replicated
         replicas: 1
         placement:
-           constraints: [node.role == manager]
+           constraints: [node.role != manager]
 #           constraints: [node.role == worker]
 
-      volumes:
-        - /box/logs/wildfly/vms:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
+#      volumes:
+#        - /box/logs/wildfly/vms:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
 #      networks:
 #        - backend
       environment:
-        WAS_NAME: vms ### Edit WAS name 
+        WAS_NAME: dev_jsms ### Edit WAS name 
         TZ: Asia/Seoul
 
