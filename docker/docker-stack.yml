@@ -2,28 +2,45 @@ version: '3.7'
 
 services:
     wildfly:
-      image: 10.50.106.73:6000/dev_jsms_wildfly:latest ### Edit image name 
+      #image: 10.50.23.30:5000/boot-vms:latest ### Edit image name 
+      image: %REGISTRY%/%APPLICATION_NAME%:latest ### Edit image name 
       build:
         context: .
         dockerfile: Dockerfile
 #      restart: always # if container down restart autometic
-      user: "701"
+#      user: "701" # Fixed Value (asmanager)
+#      user: root
       ports:
-        - 8080:8080 ### Edit port name (http) 
-        - 8009:8009 ### Edit port name (ajp)
-        - 9990:9990 ### Edit port name (webadmin)
+        - %HTTP_PORT%:8080 ### Edit port name (http) 
+#        - %AJP_PORT%:8009 ### Edit port name (ajp)
+#        - %ADMIN_PORT%:9990 ### Edit port name (webadmin)
       deploy:
         mode: replicated
         replicas: 1
         placement:
-           constraints: [node.role != manager]
-#           constraints: [node.role == worker]
+#          constraints: [node.role == manager]
+#          constraints: [node.role == worker]
+          constraints: [node.role != manager]
+#           constraints: [node.hostname == jv0516]
+        labels:
+          - "traefik.enable=true"
+          - "traefik.http.routers.%APPLICATION_NAME%.rule=Host(`%DOMAIN_URL%`)"
+          - "traefik.http.routers.%APPLICATION_NAME%.entrypoints=web"
+          - "traefik.http.services.%APPLICATION_NAME%.loadbalancer.server.port=8080"
+          - "traefik.http.services.%APPLICATION_NAME%.loadbalancer.sticky=true"
+          - "traefik.http.services.%APPLICATION_NAME%.loadbalancer.sticky.cookie.name=vmsCookie"
+          - "traefik.http.services.%APPLICATION_NAME%.loadbalancer.sticky.cookie.secure=true"
 
 #      volumes:
-#        - /box/logs/wildfly/vms:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
+#        - /box/logs/vms-was/springboot:/box/java_logs/vms-was ### Edit WAS name , application log dir
 #      networks:
 #        - backend
+#      networks:
+#       - traefik-net
       environment:
-        WAS_NAME: dev_jsms ### Edit WAS name 
         TZ: Asia/Seoul
+#networks:
+#  traefik-net:
+#    external:
+#      name: traefik-net
 

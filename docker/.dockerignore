@@ -4,5 +4,8 @@ README-secret.md
 .git
 .github
 *.log
+.env
+.env_dev
+.env_prod
 build
 
