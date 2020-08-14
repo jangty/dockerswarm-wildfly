@@ -20,8 +20,6 @@ ADD docker/wildfly_config/standalone.conf $JBOSS_HOME/bin/
 
 ADD docker/modules $JBOSS_HOME/modules/
 
-ENV WAS_NAME=${WAS_NAME}
-#ENV CLUSTER_PW=${CLUSTER_PW}
 
 # Add app
 ADD SYS_TOOL/target/*.war /opt/jboss/wildfly/standalone/deployments/
@@ -30,7 +28,13 @@ ADD SYS_TOOL/target/*.war /opt/jboss/wildfly/standalone/deployments/
 ## scouter
 USER jboss
 RUN mkdir scouter
-ADD docker/scouter /opt/jboss/scouter
+ADD docker/scouter scouter
+RUN chmod -R 777 scouter && chown -R asmanager scouter
+
+RUN mkdir scripts
+COPY docker/entrypoint.sh scripts
+RUN chmod -R 777 scripts && chown -R asmanager scripts
+
 
 #USER jboss
 USER "701"
