@@ -26,7 +26,7 @@ ADD SYS_TOOL/target/*.war /opt/jboss/wildfly/standalone/deployments/
 
 
 ## scouter
-#USER jboss
+USER jboss
 RUN mkdir scouter
 ADD docker/scouter scouter
 RUN chmod -R 777 scouter 
