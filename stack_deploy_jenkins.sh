@@ -53,10 +53,20 @@ done
 
 docker service logs --tail 0 -f %APPLICATION_NAME% | while read line; do
     echo "$line"
-      if [[ $line =~ 'Started SiteApplication in' ]]; then
+      if [[ $line =~ 'WildFly Full 14.0.1.Final (WildFly Core 6.0.2.Final) started in ' ]]; then
             pkill -9 -P $$ -f "docker service logs --tail 0 -f"
       fi
-      if [[ $line =~ 'Application run failed' ]]; then
+      if [[ $line =~ 'WildFly Full 14.0.1.Final (WildFly Core 6.0.2.Final) started (with errors) in' ]]; then
+            pkill -9 -P $$ -f "docker service logs --tail 0 -f"
+            
+            echo "[[[[[[[[[[[[ ERROR]]]]]]]]]]]] AUTO ROLLBACK !!!!!! "
+            docker service rollback %APPLICATION_NAME%
+            echo "[[[[[[[[[[[[ ERROR]]]]]]]]]]]] rollback Complete ! "
+            echo "[INFO] CHECK Application Service !!!!!! "
+            
+            exit 1;
+      fi
+      if [[ $line =~ 'WildFly Full 14.0.1.Final (WildFly Core 6.0.2.Final) stopped in' ]]; then
             pkill -9 -P $$ -f "docker service logs --tail 0 -f"
             
             echo "[[[[[[[[[[[[ ERROR]]]]]]]]]]]] AUTO ROLLBACK !!!!!! "
