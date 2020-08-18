@@ -2,6 +2,10 @@
 FROM jboss/wildfly:14.0.1.Final
 # wildfly jdk edit.
 
+USER root
+RUN yum install -y net-tools \
+    locales
+    
 ENV JBOSS_HOME /opt/jboss/wildfly
 
 #USER root
