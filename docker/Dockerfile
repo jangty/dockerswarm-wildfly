@@ -29,12 +29,12 @@ ADD SYS_TOOL/target/*.war /opt/jboss/wildfly/standalone/deployments/
 #USER jboss
 RUN mkdir scouter
 ADD docker/scouter scouter
-RUN chmod -R 777 scouter && chown -R jboss scouter
+RUN chmod -R 777 scouter 
 #RUN chmod -R 777 scouter && chown -R asmanager scouter
 
 RUN mkdir scripts
 COPY docker/entrypoint.sh scripts
-RUN chmod -R 777 scripts && chown -R jboss scripts
+RUN chmod -R 777 scripts 
 #RUN chmod -R 777 scripts && chown -R asmanager scripts
 
 
