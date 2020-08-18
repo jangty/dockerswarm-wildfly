@@ -5,7 +5,7 @@ FROM jboss/wildfly:14.0.1.Final
 ENV JBOSS_HOME /opt/jboss/wildfly
 
 #USER root
-USER "701"
+#USER "701"
 
 
 RUN /opt/jboss/wildfly/bin/add-user.sh asmanager asmanager --silent
@@ -26,7 +26,7 @@ ADD SYS_TOOL/target/*.war /opt/jboss/wildfly/standalone/deployments/
 
 
 ## scouter
-USER jboss
+#USER jboss
 RUN mkdir scouter
 ADD docker/scouter scouter
 RUN chmod -R 777 scouter && chown -R asmanager scouter
@@ -37,7 +37,7 @@ RUN chmod -R 777 scripts && chown -R asmanager scripts
 
 
 #USER jboss
-USER "701"
+#USER "701"
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
